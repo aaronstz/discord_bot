@@ -87,7 +87,7 @@ def run_discord_bot():
         channel = message.channel
         member = message.author
 
-        if message.content[0] == '!':
+        if message.content[0] == '?':
             if (member.activity):
                 hora = datetime.now().hour 
 
