@@ -10,18 +10,13 @@ import pytz
 
 load_dotenv()
 
-
+server_members = []
 
 tracked_game = 'Visual Studio Code'
 timers = {}
 global guild_id 
 guild_id= os.getenv('GUILD_ID')
 minutos = datetime.now().minute
-
-a = {}
-b = []
-msg_channel = {}
-
 
 async def send_msg(message, user_message, is_private):
     try:
@@ -71,9 +66,7 @@ def run_discord_bot():
         channel = general
         await bot.change_presence(activity=discord.Game('online'))
         for member in channel.members:
-            # if member.activity:
-            b.append(member.name)
-            # print(general, b)
+            server_members.append(member.name)
             if member.name != bot.user.name: #no me interesa saber lo que hace el bot
                 if (member.activity):
                         hora = datetime.now().hour 
@@ -90,9 +83,7 @@ def run_discord_bot():
                         else:
                             await dont_send_hour_msg(member, general, num)
                 else:
-                    # await general.send(f'{member} está afk')
                     pass
-        # await channel.send('test')
 
     @bot.event
     async def on_message(message):
@@ -100,10 +91,6 @@ def run_discord_bot():
             return 
         
         channel = message.channel
-        # global bot_channel
-        # bot_channel = channel
-        # print(channel)
-
         member = message.author
 
         if message.content[0] == '!':
