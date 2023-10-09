@@ -12,14 +12,11 @@ load_dotenv()
 
 server_members = []
 
-global guild_id 
-guild_id= os.getenv('GUILD_ID')
 
 async def send_msg(message, user_message, is_private):
     try:
         resp = respuestas.handle_response(user_message)
         await message.author.send(resp) if is_private else await message.channel.send(resp)
-        # print(resp)
     except Exception as e:
         print(e)
 
