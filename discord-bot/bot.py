@@ -12,11 +12,8 @@ load_dotenv()
 
 server_members = []
 
-tracked_game = 'Visual Studio Code'
-timers = {}
 global guild_id 
 guild_id= os.getenv('GUILD_ID')
-minutos = datetime.now().minute
 
 async def send_msg(message, user_message, is_private):
     try:
